@@ -8,12 +8,18 @@ class CowsController < ApplicationController
   end
 
   def create
-    @cow = Cow.new(params[:cow])
+    @cow = Cow.new(cow_params)
 
     if @cow.save
       redirect_to cows_path
     else
       render :new
     end
+  end
+
+  private
+
+  def cow_params
+    params.require(:cow).permit(:name, :breed)
   end
 end
