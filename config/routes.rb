@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  resources :cows
+  resources :cows do
+    collection do
+      get 'latest'
+    end
+  end
 end
