@@ -17,6 +17,10 @@ class CowsController < ApplicationController
     end
   end
 
+  def latest
+    @cows = Cow.order(created_at: :desc).limit(3)
+  end
+
   private
 
   def cow_params
